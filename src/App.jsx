@@ -29,19 +29,16 @@ function App() {
         <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul>
-            <CoreConcept {...CORE_CONCEPTS[0]}/>
-            <CoreConcept {...CORE_CONCEPTS[1]}/>
-            <CoreConcept {...CORE_CONCEPTS[2]}/>
-            <CoreConcept {...CORE_CONCEPTS[3]}/>
+            {CORE_CONCEPTS.map((conceptItem)=> (<CoreConcept key={conceptItem.title} {...conceptItem} />))}
           </ul>
         </section>
         <section id="examples">
             <h2>Examples</h2>
             <menu>
-              <TabButton label="Components" onSelect={()=>HandleSelect('components')}/>
-              <TabButton label="JSX" onSelect={()=>HandleSelect('jsx')}/>
-              <TabButton label="Props" onSelect={()=>HandleSelect('props')}/>
-              <TabButton label="State" onSelect={()=>HandleSelect('state')}/>
+              <TabButton isSelected = {selectedTopic === 'components'} label="Components" onSelect={()=>HandleSelect('components')}/>
+              <TabButton isSelected = {selectedTopic === 'jsx'} label="JSX" onSelect={()=>HandleSelect('jsx')}/>
+              <TabButton isSelected = {selectedTopic === 'props'} label="Props" onSelect={()=>HandleSelect('props')}/>
+              <TabButton isSelected = {selectedTopic === 'state'} label="State" onSelect={()=>HandleSelect('state')}/>
             </menu>
             {tabContent}
 
